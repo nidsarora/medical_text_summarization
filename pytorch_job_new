@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH --gres=gpu:1
+#SBATCH -p nlp
+#SBATCH --cpus-per-task=1
+#SBATCH --time=60:00:00
+#SBATCH --mem=8GB
+#SBATCH --job-name=test
+#SBATCH --output=test_job_%j.out
+
+. /etc/profile.d/lmod.sh
+module use /pkgs/environment-modules/
+module load pytorch-36
+python pytorch_simple.py
